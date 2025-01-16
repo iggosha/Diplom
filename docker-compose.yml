@@ -1,0 +1,25 @@
+services:
+  db:
+    image: postgres:latest
+    container_name: fin-tracker-db
+    environment:
+      POSTGRES_DB: fin-tracker-db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    container_name: fin-tracker-app
+    image: golovkov/fin-tracker:1.0.0
+    ports:
+      - "7070:8080"
+    depends_on:
+      - db
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+
+volumes:
+  postgres_data:

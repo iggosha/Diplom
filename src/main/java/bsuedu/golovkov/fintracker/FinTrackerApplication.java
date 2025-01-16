@@ -1,13 +1,13 @@
-package bsuedu.golovkov.diplom;
+package bsuedu.golovkov.fintracker;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DiplomApplication {
+public class FinTrackerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DiplomApplication.class, args);
+        SpringApplication.run(FinTrackerApplication.class, args);
     }
 
 }
