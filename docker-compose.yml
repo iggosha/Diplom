@@ -15,7 +15,7 @@ services:
     container_name: fin-tracker-app
     image: golovkov/fin-tracker:1.0.0
     ports:
-      - "7070:8080"
+      - "8080:8080"
     depends_on:
       - db
     environment:
