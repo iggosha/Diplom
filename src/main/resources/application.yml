@@ -9,7 +9,8 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
+app:
+  frontend-url: http://localhost:3000
 server:
   port: 8080
   servlet:
