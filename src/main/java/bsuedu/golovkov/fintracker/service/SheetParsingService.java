@@ -5,7 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
-public interface SheetProcessingService {
+public interface SheetParsingService {
 
     String getCell(MultipartFile multipartFile, Integer rowNum, Integer cellNum);
 

@@ -1,7 +1,7 @@
 package bsuedu.golovkov.fintracker.service.impl;
 
 import bsuedu.golovkov.fintracker.dto.response.RowResponseDto;
-import bsuedu.golovkov.fintracker.service.SheetProcessingService;
+import bsuedu.golovkov.fintracker.service.SheetParsingService;
 import bsuedu.golovkov.fintracker.util.ParsingUtils;
 import lombok.RequiredArgsConstructor;
 import org.apache.poi.ss.usermodel.Cell;
@@ -15,7 +15,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class SheetProcessingServiceImpl implements SheetProcessingService {
+public class SheetParsingServiceImpl implements SheetParsingService {
 
     private final ParsingUtils parsingUtils;
 
