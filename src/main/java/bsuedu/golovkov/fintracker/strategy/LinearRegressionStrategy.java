@@ -1,6 +1,6 @@
 package bsuedu.golovkov.fintracker.strategy;
 
-import bsuedu.golovkov.fintracker.dto.response.FinOperationForecastResponseDto;
+import bsuedu.golovkov.fintracker.dto.response.ForecastResponseDto;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -11,7 +11,7 @@ import java.util.List;
 public class LinearRegressionStrategy implements ForecastStrategy {
 
     @Override
-    public List<FinOperationForecastResponseDto> generateForecast(List<FinOperationForecastResponseDto> historicalData, int forecastMonths) {
+    public List<ForecastResponseDto> generateForecast(List<ForecastResponseDto> historicalData, int forecastMonths) {
         if (historicalData.isEmpty()) return new ArrayList<>();
 
         int n = historicalData.size();
@@ -37,12 +37,12 @@ public class LinearRegressionStrategy implements ForecastStrategy {
         BigDecimal slope = numerator.divide(denominator, RoundingMode.HALF_UP);
         BigDecimal intercept = meanY.subtract(slope.multiply(meanX));
 
-        List<FinOperationForecastResponseDto> forecast = new ArrayList<>();
+        List<ForecastResponseDto> forecast = new ArrayList<>();
         for (int i = 1; i <= forecastMonths; i++) {
             YearMonth forecastMonth = lastMonth.plusMonths(i);
             BigDecimal x = BigDecimal.valueOf((long) n + i);
             BigDecimal forecastValue = slope.multiply(x).add(intercept).setScale(2, RoundingMode.HALF_UP);
-            forecast.add(new FinOperationForecastResponseDto(forecastMonth, forecastValue));
+            forecast.add(new ForecastResponseDto(forecastMonth, forecastValue));
         }
         return forecast;
     }

@@ -1,10 +1,10 @@
 package bsuedu.golovkov.fintracker.strategy;
 
-import bsuedu.golovkov.fintracker.dto.response.FinOperationForecastResponseDto;
+import bsuedu.golovkov.fintracker.dto.response.ForecastResponseDto;
 
 import java.util.List;
 
 public interface ForecastStrategy {
 
-    List<FinOperationForecastResponseDto> generateForecast(List<FinOperationForecastResponseDto> historicalData, int forecastMonths);
+    List<ForecastResponseDto> generateForecast(List<ForecastResponseDto> historicalData, int forecastMonths);
 }

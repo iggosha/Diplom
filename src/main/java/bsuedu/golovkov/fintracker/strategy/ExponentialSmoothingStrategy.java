@@ -1,6 +1,6 @@
 package bsuedu.golovkov.fintracker.strategy;
 
-import bsuedu.golovkov.fintracker.dto.response.FinOperationForecastResponseDto;
+import bsuedu.golovkov.fintracker.dto.response.ForecastResponseDto;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -14,7 +14,7 @@ public class ExponentialSmoothingStrategy implements ForecastStrategy {
     private static final BigDecimal BETA = BigDecimal.valueOf(0.3);
 
     @Override
-    public List<FinOperationForecastResponseDto> generateForecast(List<FinOperationForecastResponseDto> historicalData, int forecastMonths) {
+    public List<ForecastResponseDto> generateForecast(List<ForecastResponseDto> historicalData, int forecastMonths) {
         if (historicalData.isEmpty()) return new ArrayList<>();
 
         YearMonth lastMonth = historicalData.getLast().getMonth();
@@ -28,11 +28,11 @@ public class ExponentialSmoothingStrategy implements ForecastStrategy {
             trend = BETA.multiply(level.subtract(previousLevel)).add(BigDecimal.ONE.subtract(BETA).multiply(trend));
         }
 
-        List<FinOperationForecastResponseDto> forecast = new ArrayList<>();
+        List<ForecastResponseDto> forecast = new ArrayList<>();
         for (int i = 1; i <= forecastMonths; i++) {
             YearMonth forecastMonth = lastMonth.plusMonths(i);
             BigDecimal forecastValue = level.add(trend.multiply(BigDecimal.valueOf(i))).setScale(2, RoundingMode.HALF_UP);
-            forecast.add(new FinOperationForecastResponseDto(forecastMonth, forecastValue));
+            forecast.add(new ForecastResponseDto(forecastMonth, forecastValue));
         }
         return forecast;
     }
