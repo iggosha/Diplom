@@ -5,5 +5,5 @@ import org.apache.poi.ss.usermodel.Sheet;
 
 public interface BankAccountService {
 
-    BankAccount getBankAccount(Sheet sheet);
+    BankAccount getFromDbOrSheet(Sheet sheet);
 }

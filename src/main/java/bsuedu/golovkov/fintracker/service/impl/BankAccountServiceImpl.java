@@ -16,8 +16,8 @@ public class BankAccountServiceImpl implements BankAccountService {
     private final BankAccountRepository bankAccountRepository;
 
     @Override
-    public BankAccount getBankAccount(Sheet sheet) {
-        String bankAccountId = bankAccountParser.getAccountId(sheet);
+    public BankAccount getFromDbOrSheet(Sheet sheet) {
+        String bankAccountId = bankAccountParser.parseAccountId(sheet);
         return bankAccountRepository
                 .findById(bankAccountId)
                 .orElseGet(() -> {

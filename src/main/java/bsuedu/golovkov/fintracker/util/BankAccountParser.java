@@ -14,6 +14,10 @@ public class BankAccountParser {
 
     private final ParsingUtils parsingUtils;
 
+    public String parseAccountId(Sheet sheet) {
+        return parsingUtils.getCellFromRowNumAndSheetByNum(sheet, 7, 2);
+    }
+
     public BankAccount parse(Sheet sheet, String id) {
         return BankAccount.builder()
                 .id(id)
@@ -21,10 +25,6 @@ public class BankAccountParser {
                 .currency(parseCurrency(sheet))
                 .balance(parseBalance(sheet))
                 .build();
-    }
-
-    public String getAccountId(Sheet sheet) {
-        return parsingUtils.getCellFromRowNumAndSheetByNum(sheet, 7, 2);
     }
 
     private LocalDate parseCreationDate(Sheet sheet) {
