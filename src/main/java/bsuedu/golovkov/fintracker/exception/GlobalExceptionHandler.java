@@ -9,7 +9,7 @@ import static org.springframework.http.HttpStatus.CONFLICT;
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
-@RestControllerAdvice(basePackages = {"bsuedu.golovkov.fintracker.controller"})
+@RestControllerAdvice
 public class GlobalExceptionHandler {
 
     @ResponseStatus(NOT_FOUND)
@@ -27,6 +27,6 @@ public class GlobalExceptionHandler {
     @ResponseStatus(INTERNAL_SERVER_ERROR)
     @ExceptionHandler(ResourceIOException.class)
     public ExceptionResponse handleResourceIOException(ResourceIOException e, WebRequest webRequest) {
-        return new ExceptionResponse(webRequest, NOT_FOUND, e.getMessage());
+        return new ExceptionResponse(webRequest, INTERNAL_SERVER_ERROR, e.getMessage());
     }
 }

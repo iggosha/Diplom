@@ -2,7 +2,6 @@ package bsuedu.golovkov.fintracker.util;
 
 import bsuedu.golovkov.fintracker.exception.ResourceIOException;
 import bsuedu.golovkov.fintracker.exception.ResourceNotFoundException;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -20,7 +19,6 @@ import java.time.format.DateTimeParseException;
 import java.util.Optional;
 
 @Component
-@Slf4j
 public class ParsingUtils {
 
     public Sheet getSheetFromMultipartFile(MultipartFile multipartFile) {
@@ -51,7 +49,6 @@ public class ParsingUtils {
         try {
             return LocalDate.parse(dateString, DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         } catch (DateTimeParseException e) {
-            log.error("Error parsing date: {}, exception: {}", dateString, e.toString());
             return null;
         }
     }
@@ -63,7 +60,6 @@ public class ParsingUtils {
                     .replace(",", ".");
             return new BigDecimal(cellNumber);
         } catch (ArrayIndexOutOfBoundsException | NumberFormatException e) {
-            log.error("Error parsing amount: {}, exception: {}", amountString, e.toString());
             return null;
         }
     }

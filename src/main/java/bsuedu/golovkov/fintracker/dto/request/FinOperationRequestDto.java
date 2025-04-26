@@ -9,7 +9,6 @@ import java.time.LocalDate;
 public class FinOperationRequestDto {
 
     private LocalDate date;
-    private LocalDate recordDate;
     private String category;
     private String description;
     private BigDecimal amount;

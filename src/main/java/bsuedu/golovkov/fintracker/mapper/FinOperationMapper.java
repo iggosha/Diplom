@@ -15,6 +15,7 @@ import java.util.UUID;
 public interface FinOperationMapper {
 
     @Mapping(target = "id", expression = "java(generateId())")
+    @Mapping(target = "recordDate", source = "date")
     FinOperation toEntity(FinOperationRequestDto dto);
 
     FinOperationResponseDto toDto(FinOperation entity);
